@@ -45,14 +45,14 @@
     
 		var popupContent = '';
 		if (feature.properties) {
-			popupContent += JSON.stringify(feature.properties);
+			popupContent = `<h2>${feature.properties.name}</h2> <p>${feature.properties.data_i18n[0].description}</p> <h2>Raw Data</h2><pre>${JSON.stringify(feature.properties, null, 2)}</pre>`;
 		}
     var popup = L.popup({maxHeight: 400}).setContent(popupContent);
 
 		layer.bindPopup(popup);
 	}
 
-	/* global campus, bicycleRental, freeBus, coorsField */
+	/* global servicesJson */
 	var circleLayer = L.geoJSON(servicesJson, {
 
 		style: function (feature) {
